@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../../models/usable_control.dart';
+import 'control_drag_feedback.dart';
 
 class DraggableItem extends StatelessWidget {
   final UsableControl control;
 
-  const DraggableItem(this.control, {Key? key}) : super(key: key);
+  const DraggableItem({required this.control, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,11 @@ class DraggableItem extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const Icon(Icons.drag_indicator),
+          Draggable<UsableControl>(
+              data: control,
+              feedback: ControlDragFeedback(control.name),
+              child: const Icon(Icons.drag_indicator)
+          ),
           Expanded(
             child: Stack(children: [
               control.displayWidget,

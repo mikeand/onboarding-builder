@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:onboarding/components/available_controls.dart';
 import 'package:onboarding/components/destination_list.dart';
-import './components/controls/generic_text.dart';
-import './components/drag_container.dart';
 import 'components/control_group.dart';
 
 void main() {
@@ -38,14 +35,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Row(
         children: const [
           DestinationList(),
-          MyStatefulWidget()
+          ControlGroup()
         ]),
     );
   }

@@ -10,6 +10,6 @@ class AvailableControls extends StatelessWidget {
   Widget build(BuildContext context) {
     return const SizedBox(
         width: 350,
-        child: MyStatefulWidget());
+        child: ControlGroup());
   }
 }
