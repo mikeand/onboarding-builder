@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:onboarding/components/drag/drag_destination_placeholder.dart';
-import 'package:onboarding/components/drag/draggable_item.dart';
 import 'package:onboarding/models/usable_control.dart';
+
+import 'drag/drag_destination_item.dart';
 
 class DestinationList extends StatefulWidget {
   const DestinationList({Key? key}) : super(key: key);
@@ -30,11 +31,8 @@ class _DestinationListState extends State<DestinationList> {
         ),
       ]);
     } else {
-      return Column(children: [
-        DragDestinationPlaceholder(
-            onAdd: _handleAddControl, height: 5, position: index),
-        DraggableItem(control: controls[index]),
-      ]);
+      return DragDestinationItem(
+          control: controls[index], position: index, onAdd: _handleAddControl);
     }
   }
 
@@ -46,6 +44,10 @@ class _DestinationListState extends State<DestinationList> {
         margin: const EdgeInsets.all(10),
         padding: const EdgeInsets.all(6),
         decoration: BoxDecoration(
+            gradient: const LinearGradient(colors: [
+              Color.fromRGBO(255, 255, 224, 1),
+              Color.fromRGBO(255, 255, 252, 1),
+            ]),
             border: Border.all(color: Colors.black38),
             borderRadius: BorderRadius.circular(5)),
         child: ListView.builder(

@@ -1,5 +1,6 @@
 // stores ExpansionPanel state information
 import 'package:flutter/material.dart';
+import 'package:onboarding/components/controls/generic/small_headline.dart';
 import 'package:onboarding/components/controls/generic_text.dart';
 import 'package:onboarding/components/controls/person_name.dart';
 import 'package:onboarding/components/drag/draggable_item.dart';
@@ -19,6 +20,7 @@ class _ControlGroupState extends State<ControlGroup> {
     ControlCategory(title: "Generic", controls: [
       UsableControl(name: 'Text Input', displayWidget: const GenericText()),
       UsableControl(name: 'Number Input', displayWidget: const GenericText()),
+      UsableControl(name: 'Small Headline', displayWidget: const SmallHeadline()),
     ]),
     ControlCategory(
       title: "Biographical",

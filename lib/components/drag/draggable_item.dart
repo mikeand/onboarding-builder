@@ -18,6 +18,7 @@ class DraggableItem extends StatelessWidget {
           color: Colors.black38,
         ),
         borderRadius: BorderRadius.circular(5),
+        color: Theme.of(context).canvasColor,
       ),
       child: Row(
         children: [
