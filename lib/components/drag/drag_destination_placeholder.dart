@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
-import 'package:onboarding/models/usable_control.dart';
+import 'package:onboarding/components/controls/placeable_control.dart';
+import 'package:provider/provider.dart';
+
+import '../../models/controls_displayed.dart';
 
 class DragDestinationPlaceholder extends StatelessWidget {
-  final Function(UsableControl, int) onAdd;
-  final double height;
-  final int position;
-
-  const DragDestinationPlaceholder(
-      {required this.onAdd, this.height = 60, this.position = -1, Key? key})
-      : super(key: key);
+  const DragDestinationPlaceholder({super.key});
 
   Widget _buildDragTarget(
-      BuildContext context, List<UsableControl?> incoming, List rejected) {
+      BuildContext context, List<PlaceableControl?> incoming, List rejected) {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: DottedBorder(
@@ -21,8 +18,13 @@ class DragDestinationPlaceholder extends StatelessWidget {
         radius: const Radius.circular(5),
         color: Colors.black38,
         child: ClipRRect(
-          borderRadius: const BorderRadius.all(Radius.circular(5)),
-          child: Container(height: height, color: Colors.white60),
+          borderRadius: const BorderRadius.all(
+            Radius.circular(5),
+          ),
+          child: Container(
+            height: 60,
+            color: Colors.white60,
+          ),
         ),
       ),
     );
@@ -30,9 +32,10 @@ class DragDestinationPlaceholder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DragTarget<UsableControl>(
+    final controlList = context.read<ControlsDisplayed>();
+    return DragTarget<PlaceableControl>(
       builder: _buildDragTarget,
-      onAccept: (c) => onAdd(c, position),
+      onAccept: (c) => controlList.addControl(c),
     );
   }
 }

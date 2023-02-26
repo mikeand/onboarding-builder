@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-
-import '../../models/usable_control.dart';
+import '../controls/placeable_control.dart';
 import 'control_drag_feedback.dart';
 
 class DraggableItem extends StatelessWidget {
-  final UsableControl control;
+  final PlaceableControl control;
 
   const DraggableItem({required this.control, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final controlName = control.controlName.split("/")[1];
+
     return Container(
       padding: const EdgeInsets.only(top: 5, right: 5, bottom: 5),
       margin: const EdgeInsets.all(5),
@@ -22,18 +23,18 @@ class DraggableItem extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Draggable<UsableControl>(
+          Draggable<PlaceableControl>(
               data: control,
-              feedback: ControlDragFeedback(control.name),
+              feedback: ControlDragFeedback(controlName),
               child: const Icon(Icons.drag_indicator)
           ),
           Expanded(
             child: Stack(children: [
-              control.displayWidget,
+              control,
               SizedBox(
                 width: double.infinity,
                 child: Text(
-                  control.name,
+                  controlName,
                   textAlign: TextAlign.right,
                   style: Theme.of(context)
                       .textTheme

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:onboarding/components/destination_list.dart';
-import 'components/control_group.dart';
+import './screens/form_builder.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,15 +37,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Row(
-        children: const [
-          DestinationList(),
-          ControlGroup()
-        ]),
-    );
+    return const FormBuilder();
   }
 }
