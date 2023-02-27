@@ -29,4 +29,9 @@ class ControlsDisplayed with ChangeNotifier {
     }
   }
 
+  void remove(PlaceableControl control) {
+    _controls.remove(control);
+    notifyListeners();
+  }
+
 }

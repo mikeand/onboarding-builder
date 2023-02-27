@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:onboarding/components/drag/draggable_item.dart';
 import 'package:onboarding/models/prototype_control_list.dart';
+import 'package:onboarding/models/trash_list.dart';
 import 'package:provider/provider.dart';
 import 'drag/trash.dart';
 
@@ -18,17 +19,30 @@ class _ControlGroupState extends State<ControlGroup> {
   @override
   Widget build(BuildContext context) {
     final controls = context.read<PrototypeControlList>();
+    final trash = context.watch<TrashList>();
 
     return SingleChildScrollView(
       child: SizedBox(
         width: 400,
-        child: _buildPanel(controls),
+        child: _buildPanel(controls, trash),
       ),
-
     );
   }
 
-  Widget _buildPanel(PrototypeControlList controls) {
+  List<Widget> _buildControlsForCategory(
+      PrototypeControlList controls, String category) {
+    return controls
+        .getControlsForCategory(category)
+        .map((e) => DraggableItem(
+              control: e,
+            ))
+        .toList();
+  }
+
+  List<Widget> _buildControlsForTrash(TrashList trash) =>
+      trash.items.map((e) => DraggableItem(control: e)).toList();
+
+  Widget _buildPanel(PrototypeControlList controls, TrashList trash) {
     final categories = controls.categoryList;
 
     return ExpansionPanelList(
@@ -37,8 +51,7 @@ class _ControlGroupState extends State<ControlGroup> {
           var listIndex = _expanded.indexOf(categories[index]);
           if (listIndex != -1) {
             _expanded.removeAt(listIndex);
-          }
-          else {
+          } else {
             _expanded.add(categories[index]);
           }
         });
@@ -46,17 +59,16 @@ class _ControlGroupState extends State<ControlGroup> {
       children: categories.map<ExpansionPanel>((categoryName) {
         return ExpansionPanel(
           headerBuilder: (BuildContext context, bool isExpanded) {
-            return (categoryName == 'Trash' ? const Trash() : ListTile(
-              title: Text(categoryName),
-            ) );
+            return (categoryName == 'Trash'
+                ? const Trash()
+                : ListTile(
+                    title: Text(categoryName),
+                  ));
           },
           body: Column(
-            children: controls.getControlsForCategory(categoryName)
-                .map((e) =>
-                DraggableItem(
-                  control: e,
-                ))
-                .toList(),
+            children: (categoryName == 'Trash'
+                ? _buildControlsForTrash(trash)
+                : _buildControlsForCategory(controls, categoryName)),
           ),
           isExpanded: _expanded.contains(categoryName),
         );

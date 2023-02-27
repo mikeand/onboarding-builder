@@ -15,4 +15,9 @@ class TrashList with ChangeNotifier {
     notifyListeners();
   }
 
+  void clear() {
+    _controls.clear();
+    notifyListeners();
+  }
+
 }

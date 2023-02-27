@@ -14,7 +14,7 @@ class PrototypeControlList with ChangeNotifier {
   int get length => _controls.length;
 
   List<String> get categoryList =>
-    _controls.map((c) => c.controlName.split("/")[0]).toSet().toList();
+    _controls.map((c) => c.controlName.split("/")[0]).toSet().toList()..add("Trash");
 
   List<PlaceableControl> getControlsForCategory(String category) =>
       _controls.where((c) => c.controlName.startsWith('$category/')).toList();
