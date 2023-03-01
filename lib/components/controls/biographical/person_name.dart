@@ -1,22 +1,6 @@
 import 'package:flutter/material.dart';
-import '../generic/forms/small_headline_form.dart';
-import '../placeable_control.dart';
-import 'forms/person_name_form.dart';
 
-class PersonName extends StatelessWidget implements PlaceableControl {
-  @override
-  String get controlName => "Biographical/Person Name";
-
-  @override
-  PlaceableControl clone({Key? key}) {
-    return PersonName(key: key);
-  }
-
-
-  @override
-  Widget createForm() {
-    return const PersonNameForm();
-  }
+class PersonName extends StatelessWidget {
 
   const PersonName({Key? key}) : super(key: key);
 

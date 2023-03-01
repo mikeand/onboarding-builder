@@ -1,20 +1,7 @@
 import 'package:flutter/material.dart';
-import '../placeable_control.dart';
 import 'forms/generic_text_form.dart';
 
-class GenericText extends StatelessWidget implements PlaceableControl {
-  @override
-  final String controlName = "Generic/Text Input";
-
-  @override
-  PlaceableControl clone({Key? key})  {
-    return GenericText(key: key,);
-  }
-
-  @override
-  Widget createForm() {
-    return const GenericTextForm();
-  }
+class GenericText extends StatelessWidget {
 
   const GenericText({Key? key}) : super(key: key);
 

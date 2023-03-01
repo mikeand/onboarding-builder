@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../components/drag/drag_destination_placeholder.dart';
-import '../components/controls/placeable_control.dart';
 import '../models/controls_displayed.dart';
 import './drag/drag_destination_item.dart';
 

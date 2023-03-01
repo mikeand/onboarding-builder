@@ -1,28 +1,32 @@
-
-
 import 'package:flutter/material.dart';
 
-import '../components/controls/placeable_control.dart';
 import 'control_display_item.dart';
 
 class ControlsDisplayed with ChangeNotifier {
   final List<ControlDisplayItem> _controls = [];
   ControlDisplayItem? _selected;
   int count = 0;
-  Widget? _selectedForm;
 
   List<ControlDisplayItem> get controls => [..._controls];
+
   ControlDisplayItem? get selected => _selected;
-  Widget? get selectedForm => selected?.form;
+
+  Widget? get selectedForm =>
+      selected?.createForm(selected?.displayWidget?.key);
 
   int get length => _controls.length;
 
   void addControl(ControlDisplayItem item) {
     count++;
-    final newControl = item.displayWidget.clone(key: ValueKey(count));
-    final newForm = newControl.createForm();
-    final newItem = ControlDisplayItem(id: count, category: item.category,
-        name: item.name, displayWidget: newControl, form: newForm);
+    final key = ValueKey(count);
+    final newControl = item.createWidget(key);
+    final newItem = ControlDisplayItem(
+        id: count,
+        category: item.category,
+        name: item.name,
+        createWidget: item.createWidget,
+        createForm: item.createForm,
+        displayWidget: newControl);
     _controls.add(newItem);
     setSelected(newItem);
   }
@@ -48,8 +52,6 @@ class ControlsDisplayed with ChangeNotifier {
 
   void setSelected(ControlDisplayItem control) {
     _selected = control;
-    _selectedForm = control.form;
     notifyListeners();
   }
-
 }

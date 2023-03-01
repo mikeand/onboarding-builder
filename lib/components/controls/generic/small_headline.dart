@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
 import './forms/small_headline_form.dart';
-import '../placeable_control.dart';
 
-class SmallHeadline extends StatelessWidget implements PlaceableControl {
-  @override
-  final String controlName = "Generic/Small Headline";
-
-  @override
-  PlaceableControl clone({Key? key}) {
-    return SmallHeadline(key: key);
-  }
+class SmallHeadline extends StatelessWidget {
 
   const SmallHeadline({Key? key}) : super(key: key);
 

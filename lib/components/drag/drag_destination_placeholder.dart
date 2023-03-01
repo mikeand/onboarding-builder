@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
-import 'package:onboarding/components/controls/placeable_control.dart';
 import 'package:onboarding/models/control_display_item.dart';
 import 'package:provider/provider.dart';
 

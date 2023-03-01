@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:onboarding/components/drag/draggable_item.dart';
-import 'package:onboarding/components/controls/placeable_control.dart';
 import 'package:onboarding/models/control_display_item.dart';
 import 'package:onboarding/models/controls_displayed.dart';
 import 'package:provider/provider.dart';
 
-/// This is a drag target which encapsulates a [PlaceableControl]
+/// This is a drag target which encapsulates a control
 /// This is so other controls can be dragged over the top of this
 /// item and the dragged item will be inserted above this item.
 class DragDestinationItem extends StatelessWidget {

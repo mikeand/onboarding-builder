@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:onboarding/models/controls_displayed.dart';
 import 'package:provider/provider.dart';
 import '../../models/control_display_item.dart';
-import '../controls/placeable_control.dart';
 import 'control_drag_feedback.dart';
 
 class DraggableItem extends StatelessWidget {

@@ -3,7 +3,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:onboarding/models/control_display_item.dart';
 
-import '../components/controls/placeable_control.dart';
 
 class TrashList with ChangeNotifier {
 
