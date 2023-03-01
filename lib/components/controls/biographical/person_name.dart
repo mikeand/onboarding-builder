@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../generic/forms/small_headline_form.dart';
 import '../placeable_control.dart';
+import 'forms/person_name_form.dart';
 
 class PersonName extends StatelessWidget implements PlaceableControl {
   @override
@@ -14,7 +15,7 @@ class PersonName extends StatelessWidget implements PlaceableControl {
 
   @override
   Widget createForm() {
-    return const SmallHeadlineForm();
+    return const PersonNameForm();
   }
 
   const PersonName({Key? key}) : super(key: key);

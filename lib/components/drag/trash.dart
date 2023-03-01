@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:onboarding/models/control_display_item.dart';
 import 'package:onboarding/models/controls_displayed.dart';
 import 'package:onboarding/models/trash_list.dart';
 import 'package:provider/provider.dart';
@@ -8,7 +9,7 @@ class Trash extends StatelessWidget {
   const Trash({Key? key}) : super(key: key);
 
   Widget _buildDragTarget(BuildContext context,
-      List<PlaceableControl?> incoming,
+      List<ControlDisplayItem?> incoming,
       List rejected,
       TrashList trashList) {
 
@@ -25,7 +26,7 @@ class Trash extends StatelessWidget {
   Widget build(BuildContext context) {
     final trashList = context.read<TrashList>();
     final controls = context.read<ControlsDisplayed>();
-    return DragTarget<PlaceableControl>(
+    return DragTarget<ControlDisplayItem>(
       builder: (ctx, incoming, rejected) =>
           _buildDragTarget(ctx, incoming, rejected, trashList),
       onAccept: (c) {

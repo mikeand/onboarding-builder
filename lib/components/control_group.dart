@@ -21,11 +21,12 @@ class _ControlGroupState extends State<ControlGroup> {
     final controls = context.read<PrototypeControlList>();
     final trash = context.watch<TrashList>();
 
-    return SingleChildScrollView(
-      child: SizedBox(
+    return Container(
         width: 400,
-        child: _buildPanel(controls, trash),
-      ),
+      decoration: BoxDecoration(border: Border.all(color: Colors.black38), borderRadius: BorderRadius.circular(5)),
+      margin: const EdgeInsets.all(3),
+      padding: const EdgeInsets.all(4),
+      child: _buildPanel(controls, trash),
     );
   }
 

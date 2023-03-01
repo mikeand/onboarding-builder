@@ -3,27 +3,31 @@
 import 'package:flutter/material.dart';
 
 import '../components/controls/placeable_control.dart';
+import 'control_display_item.dart';
 
 class ControlsDisplayed with ChangeNotifier {
-  final List<PlaceableControl> _controls = [];
-  PlaceableControl? _selected;
+  final List<ControlDisplayItem> _controls = [];
+  ControlDisplayItem? _selected;
   int count = 0;
   Widget? _selectedForm;
 
-  List<PlaceableControl> get controls => [..._controls];
-  PlaceableControl? get selected => _selected;
-  Widget? get selectedForm => _selectedForm;
+  List<ControlDisplayItem> get controls => [..._controls];
+  ControlDisplayItem? get selected => _selected;
+  Widget? get selectedForm => selected?.form;
 
   int get length => _controls.length;
 
-  void addControl(PlaceableControl control) {
+  void addControl(ControlDisplayItem item) {
     count++;
-    final newControl = control.clone(key: ValueKey(count));
-    _controls.add(newControl);
-    setSelected(newControl);
+    final newControl = item.displayWidget.clone(key: ValueKey(count));
+    final newForm = newControl.createForm();
+    final newItem = ControlDisplayItem(id: count, category: item.category,
+        name: item.name, displayWidget: newControl, form: newForm);
+    _controls.add(newItem);
+    setSelected(newItem);
   }
 
-  void moveControl(PlaceableControl control, int position) {
+  void moveControl(ControlDisplayItem control, int position) {
     final index = _controls.indexOf(control);
     if (index >= 0 && position < length && index != position) {
       _controls.removeAt(index);
@@ -37,14 +41,14 @@ class ControlsDisplayed with ChangeNotifier {
     }
   }
 
-  void remove(PlaceableControl control) {
+  void remove(ControlDisplayItem control) {
     _controls.remove(control);
     notifyListeners();
   }
 
-  void setSelected(PlaceableControl control) {
+  void setSelected(ControlDisplayItem control) {
     _selected = control;
-    _selectedForm = control.createForm();
+    _selectedForm = control.form;
     notifyListeners();
   }
 

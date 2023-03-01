@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:onboarding/components/drag/draggable_item.dart';
 import 'package:onboarding/components/controls/placeable_control.dart';
+import 'package:onboarding/models/control_display_item.dart';
 import 'package:onboarding/models/controls_displayed.dart';
 import 'package:provider/provider.dart';
 
@@ -8,7 +9,7 @@ import 'package:provider/provider.dart';
 /// This is so other controls can be dragged over the top of this
 /// item and the dragged item will be inserted above this item.
 class DragDestinationItem extends StatelessWidget {
-  final PlaceableControl control;
+  final ControlDisplayItem control;
   final int position;
 
   const DragDestinationItem({
@@ -18,7 +19,7 @@ class DragDestinationItem extends StatelessWidget {
   }) : super(key: key);
 
   Widget _buildDragTarget(
-      BuildContext context, List<PlaceableControl?> incoming, List rejected) {
+      BuildContext context, List<ControlDisplayItem?> incoming, List rejected) {
     return DraggableItem(control: control);
   }
 
@@ -26,7 +27,7 @@ class DragDestinationItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final controlList = context.read<ControlsDisplayed>();
 
-    return DragTarget<PlaceableControl>(
+    return DragTarget<ControlDisplayItem>(
       builder: _buildDragTarget,
       onAccept: (c) => controlList.moveControl(c, position),
     );

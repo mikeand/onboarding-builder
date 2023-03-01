@@ -1,16 +1,17 @@
 
 
 import 'package:flutter/foundation.dart';
+import 'package:onboarding/models/control_display_item.dart';
 
 import '../components/controls/placeable_control.dart';
 
 class TrashList with ChangeNotifier {
 
-  final List<PlaceableControl> _controls = [];
+  final List<ControlDisplayItem> _controls = [];
 
-  List<PlaceableControl> get items => [..._controls];
+  List<ControlDisplayItem> get items => [..._controls];
 
-  void add(PlaceableControl control) {
+  void add(ControlDisplayItem control) {
     _controls.add(control);
     notifyListeners();
   }

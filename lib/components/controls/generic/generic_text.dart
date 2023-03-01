@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../placeable_control.dart';
-import 'forms/small_headline_form.dart';
+import 'forms/generic_text_form.dart';
 
 class GenericText extends StatelessWidget implements PlaceableControl {
   @override
@@ -13,7 +13,7 @@ class GenericText extends StatelessWidget implements PlaceableControl {
 
   @override
   Widget createForm() {
-    return const SmallHeadlineForm();
+    return const GenericTextForm();
   }
 
   const GenericText({Key? key}) : super(key: key);

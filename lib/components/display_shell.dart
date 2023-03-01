@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:onboarding/components/property_edit_area.dart';
 import 'package:provider/provider.dart';
 
 import '../models/controls_displayed.dart';
@@ -18,11 +19,11 @@ class DisplayShell extends StatelessWidget {
       children: [
         const DestinationList(),
         Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            const ControlGroup(),
-            controls.selectedForm ?? const Placeholder(),
-          ],
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const ControlGroup(),
+              PropertyEditArea(controls.selectedForm),
+            ],
         ),
       ],
     );

@@ -1,7 +1,9 @@
+
+
 import 'package:flutter/material.dart';
 
-class SmallHeadlineForm extends StatelessWidget {
-  const SmallHeadlineForm({Key? key}) : super(key: key);
+class GenericTextForm extends StatelessWidget {
+  const GenericTextForm({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -9,9 +11,9 @@ class SmallHeadlineForm extends StatelessWidget {
       width: 400,
       child: TextFormField(
         decoration: const InputDecoration(
-          label: Text("Headline Text"),
+          label: Text("Label"),
         ),
-        initialValue: "Small Headline",
+        initialValue: "Label",
       ),
     );
   }
