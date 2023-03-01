@@ -30,7 +30,7 @@ class DestinationList extends StatelessWidget {
         padding: const EdgeInsets.all(6),
         decoration: BoxDecoration(
             gradient: const LinearGradient(colors: [
-              Color.fromRGBO(255, 255, 214, 1),
+              Color.fromRGBO(255, 255, 244, 1),
               Color.fromRGBO(255, 255, 252, 1),
             ]),
             border: Border.all(color: Colors.black38),

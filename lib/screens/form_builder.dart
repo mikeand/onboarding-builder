@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../components/preview_display.dart';
 import '../models/controls_displayed.dart';
 import '../models/prototype_control_list.dart';
 import '../models/trash_list.dart';
@@ -17,11 +18,21 @@ class FormBuilder extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ControlsDisplayed()),
         ChangeNotifierProvider(create: (_) => TrashList()),
       ],
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text("Form Builder"),
+      child: DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text("Form Builder"),
+            bottom: const TabBar(tabs: [
+              Tab(icon: Icon(Icons.edit), text: "Edit",),
+              Tab(icon: Icon(Icons.preview), text: "Preview",),
+            ]),
+          ),
+          body: const TabBarView(children: [
+            DisplayShell(),
+            PreviewDisplay(),
+          ],),
         ),
-        body: const DisplayShell(),
       ),
     );
   }
