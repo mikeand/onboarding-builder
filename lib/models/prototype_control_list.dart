@@ -6,9 +6,9 @@ import '../components/controls/placeable_control.dart';
 
 class PrototypeControlList with ChangeNotifier {
   final List<PlaceableControl> _controls = [
-    const GenericText(),
-    const SmallHeadline(),
-    const PersonName(),
+    const GenericText(key: ValueKey<String>("GenericText")),
+    const SmallHeadline(key: ValueKey<String>("SmallHeadline")),
+    const PersonName(key: ValueKey<String>("PersonName")),
   ];
 
   int get length => _controls.length;

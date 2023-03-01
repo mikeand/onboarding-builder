@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 class SmallHeadlineForm extends StatelessWidget {
@@ -7,6 +5,13 @@ class SmallHeadlineForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return SizedBox(
+      width: 300,
+      child: TextFormField(
+        decoration: const InputDecoration(
+          label: Text("Headline Text"),
+        ),
+      ),
+    );
   }
 }
